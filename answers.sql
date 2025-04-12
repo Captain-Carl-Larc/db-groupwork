@@ -344,3 +344,55 @@ INSERT INTO order_history (order_id, order_status_id, status_date) VALUES
 (9, 2, '2024-09-30 10:00:00'),
 (10, 3, '2024-11-01 13:00:00');
 
+
+
+-- CREATING USERS ACCOUNTS
+-- 1. Create Administrator User (Localhost Only)
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'StrongAdminPassword123!';
+
+-- 2. Create Order Manager User (Localhost Only)
+CREATE USER 'order_manager'@'localhost' IDENTIFIED BY 'OrderMan456!';
+
+-- 3. Create Inventory Specialist User (Localhost Only)
+CREATE USER 'inventory_specialist'@'localhost' IDENTIFIED BY 'InventorySpec789!';
+
+-- 4. Create Customer Service Representative User (Localhost Only)
+CREATE USER 'customer_service'@'localhost' IDENTIFIED BY 'CustService101!';
+
+
+-- GRANTING NECESSARY PERMISSIONS
+-- 1. Grant Privileges to Administrator User
+GRANT ALL PRIVILEGES ON bookstore_db.* TO 'admin'@'localhost';
+-- The administrator has full control over the database.
+-- They can create, read, update, delete, and alter any data or structure.
+
+-- 2. Grant Privileges to Order Manager User
+GRANT SELECT, INSERT, UPDATE ON bookstore_db.Customer TO 'order_manager'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON bookstore_db.cust_order TO 'order_manager'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON bookstore_db.order_line TO 'order_manager'@'localhost';
+GRANT SELECT, INSERT             ON bookstore_db.shipping_method TO 'order_manager'@'localhost';
+GRANT SELECT, INSERT, UPDATE             ON bookstore_db.order_status TO 'order_manager'@'localhost';
+GRANT SELECT                     ON bookstore_db.order_history TO 'order_manager'@'localhost';
+-- The order manager can:
+-- -   View, add, and modify customer and order information.
+-- -   View shipping methods and order statuses.
+-- -   View order history.
+
+-- 3. Grant Privileges to Inventory Specialist User
+GRANT SELECT, INSERT, UPDATE, DELETE ON bookstore_db.book TO 'inventory_specialist'@'localhost';
+GRANT SELECT, INSERT, UPDATE, DELETE ON bookstore_db.book_author TO 'inventory_specialist'@'localhost';
+GRANT SELECT, INSERT, UPDATE, DELETE ON bookstore_db.author TO 'inventory_specialist'@'localhost';
+GRANT SELECT, INSERT, UPDATE, DELETE ON bookstore_db.book_language TO 'inventory_specialist'@'localhost';
+GRANT SELECT, INSERT, UPDATE, DELETE ON bookstore_db.publisher TO 'inventory_specialist'@'localhost';
+-- The inventory specialist can:
+-- -   Manage book, author, book language, and publisher information.
+-- -   They can add, update, delete, and view these records.
+
+-- 4. Grant Privileges to Customer Service Representative User
+GRANT SELECT ON bookstore_db.Customer TO 'customer_service'@'localhost';
+GRANT SELECT ON bookstore_db.cust_order TO 'customer_service'@'localhost';
+GRANT SELECT ON bookstore_db.order_line TO 'customer_service'@'localhost';
+GRANT SELECT ON bookstore_db.order_history TO 'customer_service'@'localhost';
+-- The customer service representative can:
+-- -   View customer information and order details.
+-- -   This allows them to assist customers with inquiries and support.
