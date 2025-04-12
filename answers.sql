@@ -145,7 +145,7 @@ CREATE TABLE order_history (
 
 -- LOADING DATA
 
--- 1. 
+-- 1. loading countries
 INSERT INTO country (country_name) VALUES
 ('USA'),
 ('Canada'),
@@ -159,7 +159,7 @@ INSERT INTO country (country_name) VALUES
 ('Mexico');
 
 
--- 2.
+-- 2. loading languages
 INSERT INTO book_language (language_name) VALUES
 ('English'),
 ('French'),
@@ -173,7 +173,7 @@ INSERT INTO book_language (language_name) VALUES
 ('Hindi');
 
 
--- 3.
+-- 3. loading address_status
 INSERT INTO address_status (status_name) VALUES
 ('Current'),
 ('Old'),
@@ -186,7 +186,7 @@ INSERT INTO address_status (status_name) VALUES
 ('Main'),
 ('Secondary');
 
--- 4.
+-- 4. loading authors
 INSERT INTO author (first_name, last_name, biography) VALUES
 ('Stephen', 'King', 'Master of horror.'),
 ('J.K.', 'Rowling', 'Author of the Harry Potter series.'),
@@ -199,7 +199,7 @@ INSERT INTO author (first_name, last_name, biography) VALUES
 ('Toni', 'Morrison', 'American author, Nobel laureate.'),
 ('Salman', 'Rushdie', 'British Indian novelist and essayist.');
 
--- 5.
+-- 5. loading publishers
 INSERT INTO publisher (publisher_name, city, country) VALUES
 ('Penguin Random House', 'New York', 'USA'),
 ('HarperCollins', 'New York', 'USA'),
@@ -213,7 +213,7 @@ INSERT INTO publisher (publisher_name, city, country) VALUES
 ('Oxford University Press', 'Oxford', 'UK');
 
 
--- 6.
+-- 6.loading customers
 INSERT INTO Customer (first_name, last_name, email, phone_number) VALUES
 ('John', 'Doe', 'john.doe@example.com', '123-456-7890'),
 ('Jane', 'Smith', 'jane.smith@example.com', '987-654-3210'),
@@ -227,7 +227,7 @@ INSERT INTO Customer (first_name, last_name, email, phone_number) VALUES
 ('Amanda', 'Martinez', 'amanda.martinez@example.com', '121-323-4343');
 
 
--- 7.
+-- 7.loading addresses
 INSERT INTO address (street_address, city, country_id, postal_code) VALUES
 ('123 Main St', 'Anytown', 1, '12345'),
 ('456 Oak Ave', 'Springfield', 1, '54321'),
@@ -240,7 +240,7 @@ INSERT INTO address (street_address, city, country_id, postal_code) VALUES
 ('666 Avenida Paulista', 'Sao Paulo', 8, '01310-930'),
 ('777 Rajpath', 'New Delhi', 9, '110001');
 
--- 8.
+-- 8. loading books
 INSERT INTO book (title, isbn, language_id, publisher_id, publication_date, price, page_count) VALUES
 ('The Shining', '978-0385121722', 1, 1, '1977-01-28', 15.99, 447),
 ('Harry Potter and the Sorcerer''s Stone', '978-0747532696', 1, 7, '1997-06-26', 19.99, 309),
@@ -253,7 +253,7 @@ INSERT INTO book (title, isbn, language_id, publisher_id, publication_date, pric
 ('Beloved', '978-0307275539', 1, 1, '1987-10-07', 16.30, 324),
 ('Midnight''s Children', '978-0140062691', 1, 1, '1981-09-30', 17.49, 448);
 
--- 9.
+-- 9. loading shipping methods
 INSERT INTO shipping_method (method_name, shipping_cost) VALUES
 ('Standard', 5.99),
 ('Express', 12.50),
@@ -266,7 +266,7 @@ INSERT INTO shipping_method (method_name, shipping_cost) VALUES
 (' local', 3.00),
 (' freight', 30.00);
 
--- 10.
+-- 10.loading order status
 INSERT INTO order_status (status_name) VALUES
 ('Pending'),
 ('Processing'),
@@ -279,7 +279,7 @@ INSERT INTO order_status (status_name) VALUES
 ('Completed'),
 ('Disputed');
 
--- 11.
+-- 11. loading orders
 INSERT INTO cust_order (customer_id, order_date, shipping_method_id, order_status_id) VALUES
 (1, '2024-01-15 10:00:00', 1, 4),
 (2, '2024-02-20 14:30:00', 2, 3),
@@ -292,7 +292,7 @@ INSERT INTO cust_order (customer_id, order_date, shipping_method_id, order_statu
 (9, '2024-09-29 08:00:00', 1, 2),
 (10, '2024-10-31 12:00:00', 3, 3);
 
--- 12.
+-- 12. loading book_authors
 INSERT INTO book_author (book_id, author_id) VALUES
 (1, 1),
 (2, 2),
@@ -305,7 +305,7 @@ INSERT INTO book_author (book_id, author_id) VALUES
 (9, 9),
 (10, 10);
 
--- 13.
+-- 13. loading customer_addresses
 INSERT INTO customer_address (customer_id, address_id, address_status_id) VALUES
 (1, 1, 1),
 (2, 2, 1),
@@ -318,7 +318,7 @@ INSERT INTO customer_address (customer_id, address_id, address_status_id) VALUES
 (9, 9, 5),
 (10, 10, 1);
 
--- 14.
+-- 14. loading order_lines
 INSERT INTO order_line (order_id, book_id, quantity, unit_price) VALUES
 (1, 1, 1, 15.99),
 (2, 2, 2, 19.99),
@@ -331,7 +331,7 @@ INSERT INTO order_line (order_id, book_id, quantity, unit_price) VALUES
 (9, 9, 2, 16.30),
 (10, 10, 1, 17.49);
 
--- 15.
+-- 15. loading order_history
 INSERT INTO order_history (order_id, order_status_id, status_date) VALUES
 (1, 4, '2024-01-15 12:00:00'),
 (2, 3, '2024-02-21 10:00:00'),
