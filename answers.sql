@@ -5,7 +5,7 @@ CREATE DATABASE bookstore_db;
 USE bookstore_db;
 
 -- CREATING TABLES
---1. BOOKS
+-- 1. BOOKS
 CREATE TABLE book (
     book_id INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE book (
     page_count INT
 );
 
---2. AUTHORS
+-- 2. AUTHORS
 CREATE TABLE author (
     author_id INT PRIMARY KEY AUTO_INCREMENT,
     first_name VARCHAR(100) NOT NULL,
@@ -91,7 +91,7 @@ CREATE TABLE customer_address (
 );
 
 
--- 11.
+-- 11.shipping_method
 CREATE TABLE shipping_method (
     shipping_method_id INT PRIMARY KEY AUTO_INCREMENT,
     method_name VARCHAR(50) NOT NULL UNIQUE,
@@ -100,14 +100,14 @@ CREATE TABLE shipping_method (
 
 
 
--- 12.
+-- 12.order_status
 CREATE TABLE order_status (
     order_status_id INT PRIMARY KEY AUTO_INCREMENT,
     status_name VARCHAR(50) NOT NULL UNIQUE
 );
 
 
--- 13.
+-- 13.cust_order
 CREATE TABLE cust_order (
     order_id INT PRIMARY KEY AUTO_INCREMENT,
     customer_id INT,  -- FOREIGN KEY to Customer
@@ -121,7 +121,7 @@ CREATE TABLE cust_order (
 
 
 
--- 14.
+-- 14.order_line
 CREATE TABLE order_line (
     order_id INT,  -- FOREIGN KEY to cust_order
     book_id INT,   -- FOREIGN KEY to book
@@ -132,7 +132,7 @@ CREATE TABLE order_line (
     FOREIGN KEY (book_id) REFERENCES book(book_id)
 );
 
--- 15.
+-- 15.order_history
 CREATE TABLE order_history (
     order_history_id INT PRIMARY KEY AUTO_INCREMENT,
     order_id INT,          -- FOREIGN KEY to cust_order
